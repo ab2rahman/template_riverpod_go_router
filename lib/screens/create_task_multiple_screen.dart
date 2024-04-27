@@ -47,62 +47,70 @@ class _CreateTaskMultipleScreenState
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              currentQuestionIndex == 0
-                  ? CommonTextField(
-                      hintText: 'Task Title',
-                      title: 'Task Title',
-                      controller: _titleController,
-                    )
-                  : Container(),
-              currentQuestionIndex == 1
-                  ? const CategoriesSelection()
-                  : Container(),
-              currentQuestionIndex == 2 ? const SelectDateTime() : Container(),
-              currentQuestionIndex == 3
-                  ? CommonTextField(
-                      hintText: 'Notes',
-                      title: 'Notes',
-                      maxLines: 6,
-                      controller: _noteController,
-                    )
-                  : Container(),
-              const Gap(30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          children: [
+            Expanded(child: Container()),
+            SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  currentQuestionIndex > 0
-                      ? ElevatedButton(
-                          onPressed: () => _prevQuestion(),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: DisplayWhiteText(
-                              text: 'Previous',
-                            ),
-                          ),
+                  currentQuestionIndex == 0
+                      ? CommonTextField(
+                          hintText: 'Task Title',
+                          title: 'Task Title',
+                          controller: _titleController,
                         )
                       : Container(),
-                  ElevatedButton(
-                    onPressed: () => currentQuestionIndex == 3
-                        ? _createTask()
-                        : _nextQuestion(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DisplayWhiteText(
-                        text: currentQuestionIndex == 3 ? 'Save' : 'Next',
-                      ),
-                    ),
-                  ),
+                  currentQuestionIndex == 1
+                      ? const CategoriesSelection()
+                      : Container(),
+                  currentQuestionIndex == 2
+                      ? const SelectDateTime()
+                      : Container(),
+                  currentQuestionIndex == 3
+                      ? CommonTextField(
+                          hintText: 'Notes',
+                          title: 'Notes',
+                          maxLines: 6,
+                          controller: _noteController,
+                        )
+                      : Container(),
                 ],
               ),
-              const Gap(30),
-            ],
-          ),
+            ),
+            Expanded(child: Container()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                currentQuestionIndex > 0
+                    ? ElevatedButton(
+                        onPressed: () => _prevQuestion(),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: DisplayWhiteText(
+                            text: 'Previous',
+                          ),
+                        ),
+                      )
+                    : Container(),
+                if (currentQuestionIndex > 0) const SizedBox(width: 16),
+                ElevatedButton(
+                  onPressed: () => currentQuestionIndex == 3
+                      ? _createTask()
+                      : _nextQuestion(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DisplayWhiteText(
+                      text: currentQuestionIndex == 3 ? 'Save' : 'Next',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Gap(30)
+          ],
         ),
       ),
     );
