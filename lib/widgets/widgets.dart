@@ -1,7 +1,9 @@
 export 'display_white_text.dart';
 export 'common_container.dart';
 export 'task_tile.dart';
+export 'task_tile_horizontal.dart';
 export 'display_list_of_tasks.dart';
+export 'display_horizontal_task_list.dart';
 export 'app_background.dart';
 export 'common_text_field.dart';
 export 'categories_selection.dart';

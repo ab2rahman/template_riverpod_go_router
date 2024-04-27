@@ -37,6 +37,7 @@ class _CreateTaskMultipleScreenState
   @override
   Widget build(BuildContext context) {
     final currentQuestionIndex = ref.watch(currentIndexState);
+    final currentProgress = ref.watch(currentProgressState);
     final colors = context.colorScheme;
 
     return Scaffold(
@@ -61,6 +62,7 @@ class _CreateTaskMultipleScreenState
                           hintText: 'Task Title',
                           title: 'Task Title',
                           controller: _titleController,
+                          onChange: () => _onTextChange(),
                         )
                       : Container(),
                   currentQuestionIndex == 1
@@ -148,8 +150,25 @@ class _CreateTaskMultipleScreenState
         AppAlerts.displaySnackbar(context, 'Task create successfully');
         context.go(RouteLocation.home);
       });
+      _resetIndex();
     } else {
       AppAlerts.displaySnackbar(context, 'Title cannot be empty');
     }
+  }
+
+  void _resetIndex() {
+    ref.read(currentProgressState.notifier).state = [
+      false,
+      false,
+      false,
+      false
+    ];
+    ref.read(currentIndexState.notifier).state = 0;
+  }
+
+  void _onTextChange() {
+    final progressState = ref.read(currentProgressState.notifier).state;
+    progressState[0] = _titleController.text != '' ? true : false;
+    debugPrint('progress title = ${progressState[0].toString()}');
   }
 }

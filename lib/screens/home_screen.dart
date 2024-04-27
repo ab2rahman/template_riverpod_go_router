@@ -57,7 +57,11 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    DisplayListOfTasks(
+                    // DisplayListOfTasks( 
+                    //   tasks: inCompletedTasks,
+                    // ),
+                    // const Gap(20),
+                    DisplayHorizontalTaskList( 
                       tasks: inCompletedTasks,
                     ),
                     const Gap(20),
@@ -74,7 +78,7 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     const Gap(20),
                     ElevatedButton(
-                      onPressed: () => context.push(RouteLocation.createTaskMultiple),
+                      onPressed: () => context.push(RouteLocation.createTask),
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: DisplayWhiteText(

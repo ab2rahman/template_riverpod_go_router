@@ -11,6 +11,7 @@ class CommonTextField extends StatelessWidget {
     this.maxLines,
     this.suffixIcon,
     this.readOnly = false,
+    this.onChange,
   });
   final TextEditingController? controller;
   final String hintText;
@@ -18,6 +19,7 @@ class CommonTextField extends StatelessWidget {
   final int? maxLines;
   final Widget? suffixIcon;
   final bool readOnly;
+  final Function()? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class CommonTextField extends StatelessWidget {
           readOnly: readOnly,
           onTapOutside: (event) {
             FocusManager.instance.primaryFocus?.unfocus();
+            if (onChange != null) onChange!();
           },
           autocorrect: false,
           controller: controller,
