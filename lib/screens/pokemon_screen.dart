@@ -58,11 +58,11 @@ class _PokemonScreenState extends ConsumerState<PokemonScreen> {
             const Gap(20),
             if (pokemonState.isLoading)
               const Center(child: CircularProgressIndicator())
-            else if (pokemonState.pokemon != null && pokemonState.species != null)
+            else if (pokemonState.pokemon != null && pokemonState.species != null && pokemonState.errorMessage == '')
               PokemonCard(pokemon: pokemonState.pokemon!, species: pokemonState.species!)
             else
-              const Center(
-                child: Text('Pokemon not found'), // Display error message
+              Center(
+                child: Text(pokemonState.errorMessage), // Display error message
               ),
           ],
         ),

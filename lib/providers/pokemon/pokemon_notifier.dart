@@ -17,11 +17,11 @@ class PokemonNotifier extends StateNotifier<PokemonState> {
       final species = await _repository.getPokemonSpecies(name);
 
       // Update state with the retrieved data and set isLoading back to false
-      state = PokemonState(pokemon: pokemon, species: species, isLoading: false);
+      state = PokemonState(pokemon: pokemon, species: species, isLoading: false, errorMessage: '');
     } catch (e) {
       debugPrint(e.toString());
       // If an error occurs, ensure isLoading is set back to false
-      state = state.copyWith(isLoading: false);
+      state = state.copyWith(isLoading: false, errorMessage: 'Pokemon not found!!');
     }
   }
 }
