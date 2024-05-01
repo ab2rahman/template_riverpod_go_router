@@ -7,4 +7,5 @@ class RouteLocation {
   static String get home => '/home';
   static String get createTask => '/createTask';
   static String get createTaskMultiple => '/createTaskMultiple';
+  static String get pokemon => '/pokemon';
 }

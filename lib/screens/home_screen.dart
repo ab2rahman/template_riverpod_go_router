@@ -86,6 +86,16 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
+                    const Gap(20),
+                    ElevatedButton(
+                      onPressed: () => context.push(RouteLocation.pokemon),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: DisplayWhiteText(
+                          text: 'See Pokemon Card',
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -97,30 +107,30 @@ class HomeScreen extends ConsumerWidget {
   }
 
   List<Task> _incompltedTask(List<Task> tasks, WidgetRef ref) {
-    final date = ref.watch(dateProvider);
+    //final date = ref.watch(dateProvider);
     final List<Task> filteredTask = [];
 
     for (var task in tasks) {
       if (!task.isCompleted) {
-        final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
-        if (isTaskDay) {
+        //final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
+        //if (isTaskDay) {
           filteredTask.add(task);
-        }
+        //}
       }
     }
     return filteredTask;
   }
 
   List<Task> _compltedTask(List<Task> tasks, WidgetRef ref) {
-    final date = ref.watch(dateProvider);
+    //final date = ref.watch(dateProvider);
     final List<Task> filteredTask = [];
 
     for (var task in tasks) {
       if (task.isCompleted) {
-        final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
-        if (isTaskDay) {
+        //final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
+        //if (isTaskDay) {
           filteredTask.add(task);
-        }
+        //}
       }
     }
     return filteredTask;
