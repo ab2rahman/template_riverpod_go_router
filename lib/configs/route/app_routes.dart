@@ -13,4 +13,9 @@ final appRoutes = [
     parentNavigatorKey: navigationKey,
     builder: CreateTaskScreen.builder,
   ),
+  GoRoute(
+    path: RouteLocation.createTaskMultiple,
+    parentNavigatorKey: navigationKey,
+    builder: CreateTaskMultipleScreen.builder,
+  ),
 ];

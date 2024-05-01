@@ -57,7 +57,11 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    DisplayListOfTasks(
+                    // DisplayListOfTasks( 
+                    //   tasks: inCompletedTasks,
+                    // ),
+                    // const Gap(20),
+                    DisplayHorizontalTaskList( 
                       tasks: inCompletedTasks,
                     ),
                     const Gap(20),
