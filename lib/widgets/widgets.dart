@@ -11,3 +11,4 @@ export 'circle_container.dart';
 export 'select_date_time.dart';
 export 'display_error_msg.dart';
 export 'task_details.dart';
+export 'pokemon_card.dart';

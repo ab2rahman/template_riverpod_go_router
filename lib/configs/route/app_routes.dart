@@ -18,4 +18,9 @@ final appRoutes = [
     parentNavigatorKey: navigationKey,
     builder: CreateTaskMultipleScreen.builder,
   ),
+  GoRoute(
+    path: RouteLocation.pokemon,
+    parentNavigatorKey: navigationKey,
+    builder: PokemonScreen.builder,
+  ),
 ];
