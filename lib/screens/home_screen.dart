@@ -23,6 +23,8 @@ class HomeScreen extends ConsumerWidget {
     final taskState = ref.watch(tasksProvider);
     final inCompletedTasks = _incompltedTask(taskState.tasks, ref);
     final completedTasks = _compltedTask(taskState.tasks, ref);
+    // Check if the user is authenticated
+    final user = ref.watch(authProvider);
 
     return Scaffold(
       body: Stack(
@@ -41,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  const DisplayWhiteText(text: 'My Todo List', size: 40),
+                  const DisplayWhiteText(text: 'Flutter Template', size: 40),
                 ],
               ),
             ),
@@ -57,42 +59,80 @@ class HomeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // DisplayListOfTasks( 
+                    // DisplayListOfTasks(
                     //   tasks: inCompletedTasks,
                     // ),
                     // const Gap(20),
-                    DisplayHorizontalTaskList( 
-                      tasks: inCompletedTasks,
-                    ),
-                    const Gap(20),
-                    Text(
-                      'Completed',
-                      style: context.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Gap(20),
-                    DisplayListOfTasks(
-                      isCompletedTasks: true,
-                      tasks: completedTasks,
-                    ),
-                    const Gap(20),
-                    ElevatedButton(
-                      onPressed: () => context.push(RouteLocation.createTask),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: DisplayWhiteText(
-                          text: 'Add New Task',
-                        ),
-                      ),
-                    ),
-                    const Gap(20),
+                    // DisplayHorizontalTaskList(
+                    //   tasks: inCompletedTasks,
+                    // ),
+                    // const Gap(20),
+                    // Text(
+                    //   'Completed',
+                    //   style: context.textTheme.headlineSmall?.copyWith(
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
+                    // const Gap(20),
+                    // DisplayListOfTasks(
+                    //   isCompletedTasks: true,
+                    //   tasks: completedTasks,
+                    // ),
+                    // const Gap(20),
+                    // ElevatedButton(
+                    //   onPressed: () => context.push(RouteLocation.createTask),
+                    //   child: const Padding(
+                    //     padding: EdgeInsets.all(8.0),
+                    //     child: DisplayWhiteText(
+                    //       text: 'Add New Task',
+                    //     ),
+                    //   ),
+                    // ),
+                    const Gap(50),
                     ElevatedButton(
                       onPressed: () => context.push(RouteLocation.pokemon),
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: DisplayWhiteText(
                           text: 'See Pokemon Card',
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (user != null) {
+                          context.push(RouteLocation.chat);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Please login to access the chat.'),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: DisplayWhiteText(
+                          text: 'See Chat',
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (user != null) {
+                          // User is authenticated, so log them out
+                          ref.read(authProvider.notifier).signOut();
+                        } else {
+                          // User is not authenticated, navigate to the login screen
+                          context.push(RouteLocation.login);
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DisplayWhiteText(
+                          text: user != null ? 'Logout' : 'Login',
                         ),
                       ),
                     ),
@@ -114,7 +154,7 @@ class HomeScreen extends ConsumerWidget {
       if (!task.isCompleted) {
         //final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
         //if (isTaskDay) {
-          filteredTask.add(task);
+        filteredTask.add(task);
         //}
       }
     }
@@ -129,7 +169,7 @@ class HomeScreen extends ConsumerWidget {
       if (task.isCompleted) {
         //final isTaskDay = Helpers.isTaskFromSelectedDate(task, date);
         //if (isTaskDay) {
-          filteredTask.add(task);
+        filteredTask.add(task);
         //}
       }
     }

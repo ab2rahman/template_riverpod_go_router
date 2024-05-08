@@ -23,4 +23,14 @@ final appRoutes = [
     parentNavigatorKey: navigationKey,
     builder: PokemonScreen.builder,
   ),
+  GoRoute(
+    path: RouteLocation.chat,
+    parentNavigatorKey: navigationKey,
+    builder: ChatScreen.builder,
+  ),
+  GoRoute(
+    path: RouteLocation.login,
+    parentNavigatorKey: navigationKey,
+    builder: LoginScreen.builder,
+  ),
 ];

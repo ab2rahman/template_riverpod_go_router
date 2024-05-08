@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "202008777238",
+    "project_id": "chat-teknograferid",
+    "storage_bucket": "chat-teknograferid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202008777238:android:190dc838760d8791735b37",
+        "android_client_info": {
+          "package_name": "com.example.template_riverpod_go_router"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202008777238-qabnnqgn6q2jvdr9sorsvqfkq0k0spjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4V33ZfLz-vVWSc4crW0XwTVDB-ll0BN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202008777238-qabnnqgn6q2jvdr9sorsvqfkq0k0spjc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202008777238:android:e8536db0c9868b85735b37",
+        "android_client_info": {
+          "package_name": "id.teknografer.template_riverpod_go_router"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202008777238-338b12iscrfoobios4ijcrkgq0h2jfm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.teknografer.template_riverpod_go_router",
+            "certificate_hash": "8dd7de9a5e855fbd4d26835f3fc74d998f981a3b"
+          }
+        },
+        {
+          "client_id": "202008777238-qabnnqgn6q2jvdr9sorsvqfkq0k0spjc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4V33ZfLz-vVWSc4crW0XwTVDB-ll0BN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202008777238-qabnnqgn6q2jvdr9sorsvqfkq0k0spjc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
